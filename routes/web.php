@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\TagController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [BlogController::class, 'index'])->name('home');
+Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
+Route::get('/tags/{tag}', [TagController::class, 'show'])->name('tag.show');
